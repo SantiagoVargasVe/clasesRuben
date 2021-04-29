@@ -24,3 +24,7 @@ const loadProfesorHTML = () => {
 }
 
 loadProfesorHTML()
+
+const prueba = () => {
+  return 'Hola'
+}
