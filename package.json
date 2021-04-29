@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "json-server": "^0.16.3"
+  },
+  "name": "proyecto",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "api": "json-server --watch data.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
