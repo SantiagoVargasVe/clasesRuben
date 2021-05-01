@@ -1,30 +1,39 @@
-let dataJSON
-const load_data = () => {
-  fetch('http://localhost:3000/profesor')
-    .then((response) => response.json())
-    .then((data) => {
-      dataJSON = data
-      console.log(dataJSON)
-    })
+const load_data = async (URL) => {
+  let dataJSON = ''
+  const request = await fetch(URL)
+  dataJSON = await request.json().then((response) => response)
+  return dataJSON
 }
 
-dataJSON = {
-  nombre: 'Santiago Alejandro Salamanca Jaramillo',
-  url_img: 'https://dummyimage.com/600x600/e398e3/fff',
-  biografia:
-    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore non cupiditate dolorum assumenda ipsam rem autem vel fugit blanditiis ea'
-}
-const loadProfesorHTML = () => {
+const loadProfesorHTML = async () => {
+  const URL = 'http://localhost:3000/profesor'
+  let dataJSON = await load_data(URL)
   let nombre = document.getElementById('profesor-nombre')
   nombre.innerHTML = dataJSON.nombre
   let biografia = document.getElementById('profesor-biografia')
   biografia.innerHTML = dataJSON.biografia
-  let image = getElementById('profesor-imagen')
+  let image = document.getElementById('profesor-imagen-profile')
   image.src = dataJSON.url_img
 }
 
-loadProfesorHTML()
-
-const prueba = () => {
-  return 'Hola'
+const loadCourses = async () => {
+  const URL = 'http://localhost:3000/clases'
+  let dataJSON = await load_data(URL)
+  const mainContainer = document.getElementById('materias')
+  dataJSON.map((element) => {
+    let nameCourse = element.nombre
+    let divMateria = document.createElement('div')
+    divMateria.className = 'materia'
+    let linkCourse = document.createElement('a')
+    linkCourse.className = 'materia-link'
+    let titleCourse = document.createElement('h2')
+    titleCourse.innerHTML = nameCourse
+    titleCourse.className = 'materia-titulo'
+    linkCourse.appendChild(titleCourse)
+    divMateria.appendChild(linkCourse)
+    mainContainer.appendChild(divMateria)
+  })
 }
+
+loadProfesorHTML()
+loadCourses()
