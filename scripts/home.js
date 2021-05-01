@@ -9,9 +9,13 @@ const loadProfesorHTML = async () => {
   const URL = 'http://localhost:3000/profesor'
   let dataJSON = await load_data(URL)
   let nombre = document.getElementById('profesor-nombre')
+  let numero = 7
+  console.log(numero)
   nombre.innerHTML = dataJSON.nombre
+  console.log(nombre)
   let biografia = document.getElementById('profesor-biografia')
   biografia.innerHTML = dataJSON.biografia
+  console.log(biografia)
   let image = document.getElementById('profesor-imagen-profile')
   image.src = dataJSON.url_img
 }
