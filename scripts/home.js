@@ -8,16 +8,12 @@ const load_data = async (URL) => {
 const loadProfesorHTML = async () => {
   const URL = 'http://localhost:3000/profesor'
   let dataJSON = await load_data(URL)
-  let numero31 = 31
   let nombre = document.getElementById('profesor-nombre')
   nombre.innerHTML = dataJSON.nombre
-  let numero = 1 + 4
   let biografia = document.getElementById('profesor-biografia')
   biografia.innerHTML = dataJSON.biografia
-  console.log('Hola, soy un error')
   let image = document.getElementById('profesor-imagen-profile')
   image.src = dataJSON.url_img
-  console.log('Hola mundo')
 }
 
 const loadCourses = async () => {
